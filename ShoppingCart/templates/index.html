@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
+    <header>
+        <img src="" alt="" class="cart-img">
+    </header>
+
+    <main>
+        <form action="cart/new" method="post">
+            {% csrf_token %}
+            <input type="text" name="name">
+            <button type="submit">submit</button>
+        </form>
+
+        <a href="cart/">Access your carts</a>
+    </main>
     
+    <footer>
+        <span></span>
+
+    </footer>
 </body>
 </html>
