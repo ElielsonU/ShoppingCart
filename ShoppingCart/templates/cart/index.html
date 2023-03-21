@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your carts</title>
 </head>
 <body>
+    {% if carts_list %}
+    <h1>Access your carts</h1>
+    <ul>
+        {% for cart in carts_list %}
+        <li> 
+            <h4>Name: <a href="/cart/{{ cart.id }}">{{ cart.name }}</a></h4>
+        </li>
+        {% endfor %}
+    </ul>    
+            
     
+    {% else %}
+    <p>There's no carts created!</p>
+    {% endif %}
+
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cart.name }}</title>
+</head>
+<body>
+    <h2>Cart: {{ cart.name }}</h2>
+    <span><strong>Created in: {{ cart.created_in }}</strong></span>
+    {% if items %}
+    <ul>
+        {% for item in items_list %}
+        <li> 
+            <h4>Name: {{ item.name }}</h4>
+            <span><strong>Price: </strong>{{ item.value }}$</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Empty cart</p>
+    {% endif %}
+
+    <fieldset>
+        <legend>Add a new item</legend>
+        <form action="" method="post">
+            <input type="text" placeholder="name" name="name">
+            <input type="number" placeholder="price" name="value" step="0.01" min="0">
+            <button type="submit">submit</button>
+        </form>
+    </fieldset>
+
+</body>
+</html>
