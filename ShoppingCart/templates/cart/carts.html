@@ -7,14 +7,18 @@
     <title>{{ cart.name }}</title>
 </head>
 <body>
-    <h2>Cart: {{ cart.name }}</h2>
+    <h2>Cart: {{ cart.name }} <button>edit</button></h2> 
     <span><strong>Created in: {{ cart.created_in }}</strong></span>
-    {% if items %}
+    <a href="/">Home</a>
+    {% if items_list %}
     <ul>
         {% for item in items_list %}
         <li> 
             <h4>Name: {{ item.name }}</h4>
             <span><strong>Price: </strong>{{ item.value }}$</span>
+            <a href="deleteitem/{{ item.id }}">
+                <button type="submit">delete</button>
+            </a>
         </li>
         {% endfor %}
     </ul>
@@ -24,12 +28,16 @@
 
     <fieldset>
         <legend>Add a new item</legend>
-        <form action="" method="post">
-            <input type="text" placeholder="name" name="name">
-            <input type="number" placeholder="price" name="value" step="0.01" min="0">
+        <form action="newitem" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cart.id }}" name="cart_id">
+            <input type="text" placeholder="name" name="name" required>
+            <input type="number" placeholder="price" name="value" step="0.01" min="0" required>
             <button type="submit">submit</button>
         </form>
     </fieldset>
+
+    <a href="deletecart/{{ cart.id }}"><button>delete cart</button></a>
 
 </body>
 </html>
